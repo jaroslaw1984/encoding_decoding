@@ -1,0 +1,27 @@
+{
+  "name": "encry_decrypt",
+  "version": "1.0.0",
+  "description": "Encoding and decoding a text in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaroslaw1984/encoding_decoding_text.git"
+  },
+  "author": "Jarosław Sochacki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaroslaw1984/encoding_decoding_text/issues"
+  },
+  "homepage": "https://github.com/jaroslaw1984/encoding_decoding_text#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
