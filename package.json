@@ -1,11 +1,11 @@
 {
-  "name": "encry_decrypt",
+  "name": "encode_decode",
   "version": "1.0.0",
   "description": "Encoding and decoding a text in JavaScript",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --config webpack.config.js",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/jaroslaw1984/encoding_decoding_text#readme",
   "devDependencies": {
+    "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.3",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
