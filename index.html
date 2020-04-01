@@ -8,12 +8,25 @@
 </head>
 
 <body>
-  <h1>Base64 encoding and decoding in JavaScript</h1>
-
-  <div class="form-group">
-    <label for="form-group__encoding">Type text</label>
-    <textarea class="form-group__encoding" id="form-group__encoding" placeholder="Type text"></textarea>
-  </div>
+  <header>
+    <h1>Base64 encoding and decoding in JavaScript</h1>
+  </header>
+  <section>
+    <div class="options" id="options">
+      <input type="radio" id="encode" name="radio_btn" value="encode" checked="checked">
+      <label for="encode">Encode</label>
+      <input type="radio" id="decode" name="radio_btn" value="decode">
+      <label for="decode">Decode</label>
+    </div>
+  </section>
+  <main>
+    <div class="form-group">
+      <label for="form-group__encoding">Type text</label>
+      <textarea class="form-group__encoding" id="form-group__encoding" placeholder="Type text"></textarea>
+      <button class="btn" id="btn">Encode</button>
+    </div>
+    <div class="history"></div>
+  </main>
 </body>
 
 </html>
