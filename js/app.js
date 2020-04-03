@@ -4,7 +4,7 @@ import Decode from "./decoding";
 
 // global variables
 const items = document.querySelectorAll('input[name="radio_btn"]');
-const textareaValue = document.getElementById("form-group__encoding");
+const textareaValue = document.getElementById("form-group__textarea");
 const btn = document.getElementById("btn");
 const div = document.querySelector(".history");
 
