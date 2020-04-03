@@ -1,1 +1,22 @@
+// -------- Settings -------
 
+// colors
+$colors: (
+  body_font_color: #ecf0f1,
+  midnight: #2c3e50,
+  background: #8e44ad,
+  color_font_radio: #8e44ad
+);
+
+@function colors($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// transitions
+$transition: (
+  radio_btn: 0.5s
+);
+
+@function transition($transition-timing) {
+  @return map-get($transition, $transition-timing);
+}
