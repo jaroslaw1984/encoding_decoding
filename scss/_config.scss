@@ -8,7 +8,10 @@ $colors: (
   body_font_color: #ecf0f1,
   midnight: #2c3e50,
   background: #8e44ad,
-  color_font_radio: #8e44ad
+  color_font_radio: #8e44ad,
+  textarea_btn_color: #ecf0f1,
+  textarea_btn_background_hover: #ecf0f1,
+  textarea_btn_text_hover: #8e44ad,
 );
 
 @function colors($color-name) {
@@ -17,7 +20,8 @@ $colors: (
 
 // transitions
 $transition: (
-  radio_btn: 0.5s
+  radio_btn: 0.5s,
+  textarea_btn: 0.5s,
 );
 
 @function transition($transition-timing) {

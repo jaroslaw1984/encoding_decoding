@@ -1,0 +1,36 @@
+/* Textarea styles */
+
+main {
+  div.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0.5em;
+    textarea.form-group__textarea {
+      width: 300px;
+      height: 200px;
+      outline: none;
+      resize: none;
+    }
+    label.form-group__label {
+      margin-bottom: 1em;
+      font-size: 1.2em;
+    }
+    button.btn {
+      width: 5em;
+      height: 3em;
+      margin-top: 0.5em;
+      background: none;
+      border: 2px solid white;
+      border-radius: 5px;
+      font-size: 1em;
+      color: colors(textarea_btn_color);
+      transition: transition(textarea_btn) all ease;
+      cursor: pointer;
+      &:hover {
+        background: colors(textarea_btn_background_hover);
+        color: colors(textarea_btn_text_hover);
+      }
+    }
+  }
+}
