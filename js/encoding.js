@@ -1,6 +1,6 @@
 export default class Encoding {
-  constructor(text = "") {
-    this.text = text !== "" ? this.encode(text) : null;
+  constructor(text) {
+    this.text = text = this.encode(text);
   }
   encode(value) {
     const encodedStr = btoa(
