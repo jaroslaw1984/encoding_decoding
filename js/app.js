@@ -3,7 +3,7 @@ import Encode from "./encoding";
 import Decode from "./decoding";
 
 // global variables
-const items = document.querySelectorAll('input[name="radio_btn"]');
+const radioBtn = document.querySelectorAll('input[name="radio_btn"]');
 const textareaValue = document.getElementById("form-group__textarea");
 const btn = document.getElementById("btn");
 const history = document.querySelector(".history");
@@ -15,9 +15,9 @@ let source;
 const getSelectionValue = () => {
   let value;
 
-  for (let i = 0; i < items.length; i++) {
-    if (items[i].checked) {
-      value = items[i].value;
+  for (let i = 0; i < radioBtn.length; i++) {
+    if (radioBtn[i].checked) {
+      value = radioBtn[i].value;
 
       break;
     }
@@ -88,7 +88,9 @@ const changeBtnContent = (e) => {
 // listeners
 (() => {
   btn.addEventListener("click", base64);
-  [...items].map((item) => item.addEventListener("change", changeBtnContent));
+  [...radioBtn].map((item) =>
+    item.addEventListener("change", changeBtnContent)
+  );
   // load items from session if exist
   document.addEventListener("DOMContentLoaded", getItems);
 })();
