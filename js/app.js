@@ -1,6 +1,10 @@
 import "../scss/index.scss";
 import Encode from "./encoding";
 import Decode from "./decoding";
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/brands";
 
 // global variables
 const radioBtn = document.querySelectorAll('input[name="radio_btn"]');
@@ -54,8 +58,16 @@ const base64 = () => {
       source.forEach((source) => {
         data += `
             <div class="content ${source.class}">
-            <div class="content__message">${source.text}</div>
-            <div class="conetent__btn"></div>
+              <div class="content__message">${source.text}
+              </div>
+              <div class="content__btn">
+                <div class="copy"> 
+                  <i class="far fa-clipboard"></i>
+                </div>
+                <div class="delete">
+                  <i class="fas fa-times"></i>
+                </div>
+              </div>
             </div>
             `;
       });
@@ -85,8 +97,12 @@ const base64 = () => {
       source.forEach((source) => {
         data += `
               <div class="content ${source.class}">
-              <div class="content__message">${source.text}</div>
-              <div class="conetent__btn"></div>
+                <div class="content__message">${source.text}
+                </div>
+                <div class="content__btn">
+                  <i class="far fa-clipboard"></i>
+                  <i class="fas fa-times"></i>
+                </div>
               </div>
               `;
       });
