@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jaroslaw1984/encoding_decoding_text#readme",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.3",
     "node-sass": "^4.13.1",
