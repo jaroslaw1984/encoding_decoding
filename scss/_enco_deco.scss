@@ -1,0 +1,48 @@
+section {
+  & h2 {
+    text-align: center;
+  }
+  div.history {
+    margin: 0 0.5em;
+    & div.content {
+      position: relative;
+      width: 100%;
+      border: 2px solid white;
+      border-radius: 8px;
+      padding: 1em;
+      margin-top: 2em;
+      &.encode {
+        background: colors(encode_background);
+      }
+      &.decode {
+        background: colors(decode_background);
+      }
+      & div.content__message {
+        display: block;
+        height: auto;
+        display: inline-block;
+        overflow-wrap: anywhere;
+      }
+      & div.content__btn {
+        display: flex;
+        position: absolute;
+        top: 25px;
+        right: 0;
+        font-size: 1.2em;
+        margin-top: 0.5em;
+        & div.copy,
+        div.delete {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 35px;
+          height: 35px;
+          border: 2px solid #343a40;
+          border-radius: 50%;
+          background: #343a40;
+          margin-right: 0.3em;
+        }
+      }
+    }
+  }
+}
