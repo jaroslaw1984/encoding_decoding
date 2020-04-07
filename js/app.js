@@ -26,38 +26,38 @@ const getSelectionValue = () => {
 
 // main function that use class to encode and decode a string
 const base64 = () => {
-  // local session encode values
+  // local session encode array values
   let source;
   // put all data from session storage to DOM
   let data = "";
 
   switch (true) {
     // do when radio encode button will pressed
-    case getSelectionValue() == "encode":
+    case getSelectionValue() === "encode":
       const encode = new Encode(textareaValue.value);
 
       // set session storage encode item
-      if (sessionStorage.getItem("encode") === null) {
+      if (sessionStorage.getItem("data") === null) {
         source = [];
       } else {
-        source = JSON.parse(sessionStorage.getItem("encode"));
+        source = JSON.parse(sessionStorage.getItem("data"));
       }
       // prevents to add empty string to array by pressing a button or refreshing a browser
-      if (textareaValue.value.length > 0) source.push(encode.text);
-
+      if (textareaValue.value.length > 0) {
+        // add to array as a JSON object
+        source.push({ text: encode.text, class: "encode" });
+      }
       // convert a value to a JSON string
-      sessionStorage.setItem("encode", JSON.stringify(source));
+      sessionStorage.setItem("data", JSON.stringify(source));
 
       // loop from source array to get data
       source.forEach((source) => {
         data += `
-        <div class="content ${
-          getSelectionValue() === "encode" ? "encode" : "decode"
-        }">
-        <div class="content__message">${source}</div>
-        <div class="conetent__btn"></div>
-        </div>
-        `;
+            <div class="content ${source.class}">
+            <div class="content__message">${source.text}</div>
+            <div class="conetent__btn"></div>
+            </div>
+            `;
       });
 
       // inserting all data from local session as innerHTML to the DOM
@@ -66,11 +66,32 @@ const base64 = () => {
       //clear textarea
       textareaValue.value = "";
       break;
+
     // do when radio decode button will pressed
-    case getSelectionValue() == "decode":
+    case getSelectionValue() === "decode":
       const decode = new Decode(textareaValue.value);
 
-      history.appendChild(document.createTextNode(decode.text));
+      if (sessionStorage.getItem("data") === null) {
+        source = [];
+      } else {
+        source = JSON.parse(sessionStorage.getItem("data"));
+      }
+      if (textareaValue.value.length > 0) {
+        source.push({ text: decode.text, class: "decode" });
+      }
+      sessionStorage.setItem("data", JSON.stringify(source));
+
+      // loop from source array to get data
+      source.forEach((source) => {
+        data += `
+              <div class="content ${source.class}">
+              <div class="content__message">${source.text}</div>
+              <div class="conetent__btn"></div>
+              </div>
+              `;
+      });
+
+      history.innerHTML = data;
 
       textareaValue.value = "";
       break;
