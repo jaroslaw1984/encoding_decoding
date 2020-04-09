@@ -40,10 +40,11 @@ const base64 = () => {
     case getSelectionValue() === "encode":
       const encode = new Encode(textareaValue.value);
 
-      // set session storage encode item
+      // Check if any data is in session storage
       if (sessionStorage.getItem("data") === null) {
         source = [];
       } else {
+        // get data from session storage and put in to variable
         source = JSON.parse(sessionStorage.getItem("data"));
       }
       // prevents to add empty string to array by pressing a button or refreshing a browser
@@ -97,13 +98,17 @@ const base64 = () => {
       source.forEach((source) => {
         data += `
               <div class="content ${source.class}">
-                <div class="content__message">${source.text}
-                </div>
-                <div class="content__btn">
+              <div class="content__message">${source.text}
+              </div>
+              <div class="content__btn">
+                <div class="copy"> 
                   <i class="far fa-clipboard"></i>
+                </div>
+                <div class="delete">
                   <i class="fas fa-times"></i>
                 </div>
               </div>
+            </div>
               `;
       });
 
@@ -111,10 +116,13 @@ const base64 = () => {
 
       textareaValue.value = "";
       break;
+
+    default:
+      null;
   }
 };
 
-// get items from local session when browser will be refresh
+// check or get items from local session when browser will be refresh or loaded
 const getItems = () => {
   base64();
 };
@@ -135,12 +143,60 @@ const changeBtnContent = (e) => {
   }
 };
 
+const removeDataFromSessionStorage = (dataItem) => {
+  let source;
+
+  // get data from session storage and put in to variable
+  source = JSON.parse(sessionStorage.getItem("data"));
+
+  source.forEach((source, index) => {
+    // compare if item from DOM and session storage are equel
+    console.log(dataItem.innerText === source.text);
+    console.log(dataItem.innerText, source.text);
+    if (dataItem.innerText === source.text) {
+      // if itdose delete selected item
+      console.log("działa");
+      source.splice(index, 1);
+    }
+  });
+
+  sessionStorage.setItem("data", JSON.stringify(source));
+};
+
+// remove specific element from DOM and session storage
+const removeData = (e) => {
+  // check if clicked elemnt contains a delete class
+  if (e.target.classList.contains("delete")) {
+    // select current parent
+    const parent = e.target.parentElement.parentElement;
+    // select current encode or decode message
+    const child = e.target.parentElement.previousElementSibling;
+
+    // set animations on a specific element
+    parent.style.animationName = "delete";
+    parent.style.animationDuration = ".3s";
+    parent.style.animationTimingFunction = "ease-out";
+    // remove element after animation will finsh
+    setTimeout(() => {
+      // remove from session storage
+      removeDataFromSessionStorage(child);
+      // remove from DOM
+      parent.remove();
+    }, 300);
+  }
+};
+
 // listeners
 (() => {
+  // start encode or decode
   btn.addEventListener("click", base64);
+  // select option
   [...radioBtn].map((item) =>
     item.addEventListener("change", changeBtnContent)
   );
   // load items from session if exist
   document.addEventListener("DOMContentLoaded", getItems);
+
+  // remove data from DOM
+  history.addEventListener("click", removeData);
 })();
