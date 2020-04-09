@@ -41,8 +41,31 @@ section {
           border-radius: 50%;
           background: #343a40;
           margin-right: 0.3em;
+          z-index: 1;
+          & svg {
+            // disable svg icons from <i> tag
+            pointer-events: none;
+          }
         }
       }
     }
+  }
+}
+
+@keyframes delete {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes add {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
