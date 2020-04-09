@@ -1,8 +1,8 @@
 body {
-  min-height: 100vh;
   background: colors(background);
   color: colors(body_font_color);
   font-family: "Montserrat", sans-serif;
+  transition: all 1s ease;
   header > h1 {
     text-align: center;
     margin: 0.5em 0 1em;
