@@ -39,14 +39,24 @@ section {
         border-radius: 1em;
       }
       // grow checked btn
-      &:checked + label {
+      &:checked + label.options__encode {
         padding-left: 1em;
-        color: colors(color_font_radio);
+        color: colors(radio_encode_font_color);
         &:before {
           top: 0;
           width: 100%;
           height: 2em;
-          background: white;
+          background: colors(radio_encode_background);
+        }
+      }
+      &:checked + label.options__decode {
+        padding-left: 1em;
+        color: colors(radio_encode_font_color);
+        &:before {
+          top: 0;
+          width: 100%;
+          height: 2em;
+          background: colors(radio_decode_background);
         }
       }
     }
