@@ -17,6 +17,9 @@ $colors: (
   textarea_btn_color: #ecf0f1,
   textarea_btn_background_hover: #ecf0f1,
   textarea_btn_text_hover: #8e44ad,
+  delete_btn_background: #343a40,
+  copy_btn_background: #343a40,
+  delete_copy_btn_background_hover: lighten(#343a40, 20%),
 );
 
 @function colors($color-name) {
