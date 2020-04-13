@@ -34,6 +34,7 @@ const base64 = () => {
   let source;
   // put all data from session storage to DOM
   let data = "";
+  const element = document.querySelector(".content");
 
   switch (true) {
     // do when radio encode button will pressed
@@ -78,6 +79,7 @@ const base64 = () => {
 
       //clear textarea
       textareaValue.value = "";
+      smoothScrollDown("scrollTo", 1000);
       break;
 
     // do when radio decode button will pressed
@@ -101,10 +103,10 @@ const base64 = () => {
               <div class="content__message">${source.text}
               </div>
               <div class="content__btn">
-                <div class="copy"> 
+                <div class="copy" title="Copy"> 
                   <i class="far fa-clipboard"></i>
                 </div>
-                <div class="delete">
+                <div class="delete" title="Delete">
                   <i class="fas fa-times"></i>
                 </div>
               </div>
@@ -116,15 +118,39 @@ const base64 = () => {
 
       textareaValue.value = "";
       break;
-
-    default:
-      null;
   }
+};
+
+const smoothScrollDown = (target, duration) => {
+  const select = document.getElementById(target);
+  const targetPosition = select.getBoundingClientRect().top;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  let startTime = null;
+
+  const animation = (currentTime) => {
+    if (startTime === null) startTime = currentTime;
+    let time = currentTime - startTime;
+    const start = ease(time, startPosition, distance, duration);
+    window.scrollTo(0, start);
+    if (time < duration) requestAnimationFrame(animation);
+  };
+
+  const ease = (t, b, c, d) => {
+    t /= d / 2;
+    if (t < 2) (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
+  };
+
+  requestAnimationFrame(animation);
 };
 
 // check or get items from local session when browser will be refresh or loaded
 const getItems = () => {
   base64();
+
+  // issue all the time is scrolling page and animation is working on all content that is why in comment
 };
 
 // change the text according to the selected option
@@ -143,6 +169,7 @@ const changeBtnContent = (e) => {
   }
 };
 
+// remove from session storage
 const removeDataFromSessionStorage = (dataItem) => {
   let source;
 
@@ -151,6 +178,8 @@ const removeDataFromSessionStorage = (dataItem) => {
 
   for (let i = source.length - 1; i >= 0; i -= 1) {
     // compare if message from DOM and session storage are equel
+    console.log(dataItem.innerText, source[i].text);
+    console.log(dataItem.innerText === source[i].text);
     if (dataItem.innerText === source[i].text) {
       // if it dose delete selected item
       source.splice(i, 1);
@@ -160,7 +189,7 @@ const removeDataFromSessionStorage = (dataItem) => {
 };
 
 // remove specific element from DOM and session storage
-const removeData = (e) => {
+const handleButtons = (e) => {
   // check if clicked elemnt contains a delete class
   if (e.target.classList.contains("delete")) {
     // select current parent
@@ -172,6 +201,10 @@ const removeData = (e) => {
     parent.style.animationName = "delete";
     parent.style.animationDuration = ".3s";
     parent.style.animationTimingFunction = "ease-out";
+
+    // transition deleting
+    // deleteContent(parent);
+
     // remove element after animation will finsh
     setTimeout(() => {
       // remove from session storage
@@ -179,6 +212,45 @@ const removeData = (e) => {
       // remove from DOM
       parent.remove();
     }, 300);
+  }
+
+  if (e.target.classList.contains("copy")) {
+    // selected div text
+    const textToCopy = e.target.parentElement.previousElementSibling;
+    //check and see if the user had a text selection range
+    let currentRange;
+    //create a selection range
+    const copyRange = document.createRange();
+
+    if (document.getSelection().rangeCount > 0) {
+      //the user has a text selection range, store it
+      currentRange = document.getSelection().getRangeAt(0);
+      //remove the current selection
+      window.getSelection().removeRange(currentRange);
+    }
+
+    //choose the element we want to select the text of
+    copyRange.selectNode(textToCopy);
+    //select the text inside the range
+    window.getSelection().addRange(copyRange);
+    //copy the text to the clipboard
+    document.execCommand("copy");
+
+    //remove our selection range
+    window.getSelection().removeRange(copyRange);
+
+    //return the old selection range
+    if (currentRange) {
+      window.getSelection().addRange(currentRange);
+    }
+    // set animations on a specific element for copy text
+    textToCopy.style.animationName = "copy_text";
+    textToCopy.style.animationDuration = "1s";
+    textToCopy.style.animationTimingFunction = "linear";
+
+    setTimeout(() => {
+      textToCopy.style = "";
+    }, 1000);
   }
 };
 
@@ -194,5 +266,5 @@ const removeData = (e) => {
   document.addEventListener("DOMContentLoaded", getItems);
 
   // remove data from DOM
-  history.addEventListener("click", removeData);
+  history.addEventListener("click", handleButtons);
 })();
