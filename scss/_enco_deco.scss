@@ -9,6 +9,10 @@ section {
     height: auto;
     margin: 0 0.5em 0.5em;
     transition: height 2s ease-out;
+    & h3.noData {
+      text-align: center;
+      padding-top: 2em;
+    }
     & div.content {
       width: 100%;
       border: 2px solid white;
