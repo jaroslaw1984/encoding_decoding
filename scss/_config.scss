@@ -20,6 +20,9 @@ $colors: (
   delete_btn_background: #343a40,
   copy_btn_background: #343a40,
   delete_copy_btn_background_hover: lighten(#343a40, 20%),
+  error_background: #343a40,
+  error_background_btn: #ecf0f1,
+  error_background_btn_text: #343a40,
 );
 
 @function colors($color-name) {
