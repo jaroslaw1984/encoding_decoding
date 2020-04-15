@@ -13,6 +13,8 @@ const history = document.querySelector(".history");
 
 // check or get items from local session when browser will be refresh or loaded
 const getItems = () => {
+  /* ----------------------------------------------- */
+  // this section only start when page is load, refresh or last element will be delete from session storage
   const section = document.getElementsByTagName("section")[1];
 
   // put all data from session storage to DOM
@@ -49,10 +51,6 @@ const getItems = () => {
   // inserting all data from local session as innerHTML in to the DOM
   history.innerHTML = data;
 
-  /* ----------------------------------------------- */
-  // this section only start when page is load, refresh or last element will be delete from session storage
-  const h3 = document.querySelector(".noData");
-
   // set title if history content is empty on load
   if (history.firstElementChild === null) {
     //create this element when history is empty
@@ -64,6 +62,7 @@ const getItems = () => {
 
     section.appendChild(h3);
   } else if (h3) {
+    const h3 = document.querySelector(".noData");
     // if h3 exist remove it
     h3.remove(h3);
   }
