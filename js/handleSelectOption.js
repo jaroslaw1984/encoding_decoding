@@ -2,7 +2,7 @@ import Encode from "./Encode";
 import Decode from "./Decode";
 import smoothScrollDown from "./scroll";
 
-// this function is a main program that use object encode.js and decode.js to encode and decode message
+// this function is a main program that use object Encode.js and Decode.js to encode and decode message
 const handleSelectOption = (type) => {
   const textarea = document.getElementById("form-group__textarea");
   const history = document.querySelector(".history");
