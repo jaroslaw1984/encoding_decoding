@@ -1,4 +1,5 @@
 import handleSelectOption from "./handleSelectOption";
+import handleError from "./handleError";
 
 // this function return what option is selected from radio input
 const getSelectionValue = () => {
@@ -30,7 +31,11 @@ export const base64 = () => {
 
     // do when radio decode button will pressed
     case getSelectionValue() === "decode":
-      handleSelectOption("decode");
+      try {
+        handleSelectOption("decode");
+      } catch (err) {
+        if (err.message == "malformed URI sequence") handleError();
+      }
       break;
   }
 };
