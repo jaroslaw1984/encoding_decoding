@@ -3,23 +3,36 @@
   top: 50%;
   left: 50%;
   display: flex;
+  width: 300px;
   flex-direction: column;
   align-items: center;
   transform: translate(-50%, -50%);
   background: colors(error_background);
   border-radius: 5px;
-  & p {
-    text-align: center;
-    padding: 1em;
+  & div.attention {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    & p {
+      text-align: center;
+      padding: 1em;
+      font-size: 0.8em;
+    }
+    & svg.fa-exclamation-circle {
+      color: #cc3f3f;
+      margin-right: 0.5em;
+      font-size: 2em;
+    }
   }
   & button.errBtn {
-    width: 5em;
-    height: 2em;
+    width: 3em;
+    height: 1.7em;
     margin-bottom: 0.5em;
     background: colors(error_background_btn);
     border: 2px solid white;
     border-radius: 5px;
     font-size: 1em;
+    text-align: center;
     color: colors(error_background_btn_text);
     cursor: pointer;
   }

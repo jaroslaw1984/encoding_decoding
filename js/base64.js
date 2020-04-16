@@ -29,7 +29,7 @@ export const base64 = () => {
       try {
         handleSelectOption("decode");
       } catch (err) {
-        if (err.message == "malformed URI sequence") handleError();
+        handleError();
       }
       break;
   }

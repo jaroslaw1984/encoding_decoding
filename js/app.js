@@ -16,6 +16,7 @@ const getItems = () => {
   /* ----------------------------------------------- */
   // this section only start when page is load, refresh or last element will be delete from session storage
   const section = document.getElementsByTagName("section")[1];
+  const h3 = document.querySelector(".noData");
 
   // put all data from session storage to DOM
   let data = "";
@@ -62,7 +63,6 @@ const getItems = () => {
 
     section.appendChild(h3);
   } else if (h3) {
-    const h3 = document.querySelector(".noData");
     // if h3 exist remove it
     h3.remove(h3);
   }
