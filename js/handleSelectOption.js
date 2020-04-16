@@ -30,10 +30,15 @@ const handleSelectOption = (type) => {
   }
   // prevents to add empty string to array by pressing a button or refreshing a browser
   if (textarea.value.length > 0) {
+    const h3 = document.querySelector(".noData");
+
     // add to array as a JSON object
     source.push({ text: select.text, class: `${type}` });
     // and scroll down to the bottom when message is under height: 100vh
     smoothScrollDown("scrollTo", 1000);
+
+    // if h3 element exists in history then delete it
+    if (h3) h3.remove();
   }
   // convert a value to a JSON string
   sessionStorage.setItem("data", JSON.stringify(source));

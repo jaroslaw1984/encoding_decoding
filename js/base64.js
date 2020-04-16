@@ -18,11 +18,6 @@ const getSelectionValue = () => {
 };
 
 export const base64 = () => {
-  const h3 = document.querySelector(".noData");
-
-  // if h3 element exists in history then delete it
-  if (h3) h3.remove();
-
   switch (true) {
     // do when radio encode button will pressed
     case getSelectionValue() === "encode":
