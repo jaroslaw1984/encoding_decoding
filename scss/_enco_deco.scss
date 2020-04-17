@@ -1,4 +1,14 @@
 section {
+  @include medium {
+    width: 70%;
+    margin: 0 auto;
+  }
+  @include large {
+    width: 65%;
+  }
+  @include desktop {
+    max-width: 800px;
+  }
   & h2 {
     text-align: center;
   }
@@ -9,17 +19,28 @@ section {
     height: auto;
     margin: 0 0.5em 0.5em;
     transition: height 2s ease-out;
+    @include medium {
+      width: 100%;
+    }
     & div.content {
       width: 100%;
       border: 2px solid white;
       border-radius: 8px;
       padding: 0.5em;
       margin-top: 2em;
+      @include medium {
+        width: 100%;
+        transition: all 1s ease;
+      }
       &.encode {
         background: colors(encode_background);
       }
       &.decode {
         background: colors(decode_background);
+        @include medium {
+          width: 90%;
+          margin-left: 10%;
+        }
       }
       & div.content__message {
         display: block;
@@ -32,6 +53,7 @@ section {
       & div.content__btn {
         display: flex;
         justify-content: flex-end;
+        align-self: center;
         font-size: 1.2em;
         margin-top: 0.2em;
         & div.delete {

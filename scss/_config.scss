@@ -38,3 +38,51 @@ $transition: (
 @function transition($transition-timing) {
   @return map-get($transition, $transition-timing);
 }
+
+// ------ mixin for responsive breakpoints -----
+
+// mobile > 360px
+$small_XX: 360px;
+
+@mixin small_XX {
+  @media (min-width: #{$small_XX}) {
+    @content;
+  }
+}
+
+// desktop > 480px
+$small_X: 480px;
+
+@mixin small_X {
+  @media (min-width: #{$small_X}) {
+    @content;
+  }
+}
+
+// desktop > 576px
+$medium: 576px;
+
+@mixin medium {
+  @media (min-width: #{$medium}) {
+    @content;
+  }
+}
+
+// desktop > 768px
+$large: 700px;
+
+@mixin large {
+  @media (min-width: #{$large}) {
+    @content;
+  }
+}
+
+// desktop > 960px
+$desktop: 992px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+// ---------------------------------------------

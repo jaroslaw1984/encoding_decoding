@@ -9,7 +9,10 @@
   transform: translate(-50%, -50%);
   background: colors(error_background);
   border-radius: 5px;
-  & div.attention {
+  @include medium {
+    width: 400px;
+  }
+  & div.warrning {
     display: flex;
     // justify-content: center;
     align-items: center;
@@ -17,11 +20,18 @@
       text-align: center;
       padding: 1em;
       font-size: 0.8em;
+      @include medium {
+        font-size: 0.9em;
+        margin-right: 0.3em;
+      }
     }
     & svg.fa-exclamation-circle {
       color: #cc3f3f;
       margin-right: 0.5em;
       font-size: 2em;
+      @include medium {
+        margin-right: 0.3em;
+      }
     }
   }
   & button.errBtn {
