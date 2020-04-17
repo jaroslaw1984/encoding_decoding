@@ -22,7 +22,7 @@ const handleError = () => {
   i.setAttribute("class", "fas fa-exclamation-circle");
   parentDiv.setAttribute("class", "error");
   parentDiv.setAttribute("style", "animation: show .5s ease");
-  childDiv.setAttribute("class", "attention");
+  childDiv.setAttribute("class", "warrning");
   body.insertBefore(parentDiv, header);
 
   button.addEventListener("click", () => {
