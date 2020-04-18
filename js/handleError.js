@@ -1,5 +1,7 @@
 // This function warns the user that he cannot decode the message if it is not encoded
 
+import { language } from "./language";
+
 const handleError = () => {
   if (document.querySelector(".error")) return;
 
@@ -10,7 +12,10 @@ const handleError = () => {
   const p = document.createElement("p");
   const i = document.createElement("i");
   const button = document.createElement("button");
-  const warrning = "You cannot decode the message if it is not encoded yet";
+  const warrning =
+    language() === "pl"
+      ? "Nie można odkodować wiadomości, jeśli nie jest jeszcze zakodowana"
+      : "You cannot decode the message if it is not encoded yet";
 
   button.setAttribute("class", "errBtn");
   button.appendChild(document.createTextNode("OK"));

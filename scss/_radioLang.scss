@@ -1,0 +1,27 @@
+.language {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
+  width: 100%;
+  @include medium {
+    justify-content: flex-end;
+    padding-bottom: 0.1em;
+  }
+  & .langs_pl,
+  .langs_en {
+    margin-right: 0.5em;
+    transition: all 0.5s ease;
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+  & input[type="radio"][name="lang"] {
+    visibility: hidden;
+  }
+  & label img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}

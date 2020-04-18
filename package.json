@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config webpack.config.js",
-    "build": "webpack --mode production"
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.0.3",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",

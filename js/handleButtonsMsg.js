@@ -1,8 +1,9 @@
 import removeDataFromSessionStorage from "./removeSession";
+import { language } from "./language";
 
 // remove specific element from DOM and session storage
 const handleButtonsMsg = (e) => {
-  const section = document.getElementsByTagName("section")[1];
+  const section = document.getElementsByTagName("section")[2];
 
   // check if clicked elemnt contains a delete class
   if (e.target.classList.contains("delete")) {
@@ -25,7 +26,10 @@ const handleButtonsMsg = (e) => {
       if (div.firstElementChild === null) {
         const h3 = document.createElement("h3");
         h3.setAttribute("class", "noData");
-        const text = "There is nothing to display";
+        const text =
+          language() === "pl"
+            ? "Nie ma nic do wyświetlenia"
+            : "There is nothing to display";
 
         h3.appendChild(document.createTextNode(text));
 

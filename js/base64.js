@@ -1,8 +1,9 @@
 import handleSelectOption from "./handleSelectOption";
 import handleError from "./handleError";
+import { language } from "./language";
 
 // this function return what option is selected from radio input
-const getSelectionValue = () => {
+export const getSelectionValue = () => {
   const radioBtn = document.querySelectorAll('input[name="radio_btn"]');
   let value;
 
@@ -41,12 +42,14 @@ export const changeBtnContent = (e) => {
 
   switch (true) {
     case getSelection == "encode":
-      btn.textContent = "Encode";
-      textareaText.textContent = "Encode the message";
+      btn.textContent = language() === "pl" ? "Zakoduj" : "Encode";
+      textareaText.textContent =
+        language() === "pl" ? "Zakoduj wiadomość" : "Encode the message";
       break;
     case getSelection == "decode":
-      btn.textContent = "Decode";
-      textareaText.textContent = "Decode the message";
+      btn.textContent = language() === "pl" ? "Odszyfruj" : "Decode";
+      textareaText.textContent =
+        language() === "pl" ? "Dekoduj wiadomość" : "Decode the message";
       break;
   }
 };
